@@ -6,7 +6,6 @@ import os
 import stat
 import sys
 import time
-import urllib2
 import urllib
 import os
 
