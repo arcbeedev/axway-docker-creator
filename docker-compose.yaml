@@ -1,0 +1,61 @@
+ersion: '3.4'
+
+services:
+  adminnodemanager:
+    image: admin-node-manager
+    container_name: adminnodemanager
+    healthcheck:
+      test: ["CMD", "curl", "-kf", "https://adminnodemanager.axway.local:8090"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    ports:
+      - "8090:8090"
+    environment:
+      - EMT_DEPLOYMENT_ENABLED=true
+    volumes:
+      - ../data:/opt/Axway/apigateway/conf/licenses
+    hostname: adminnodemanager
+    domainname: axway.local
+    networks:
+      default:
+        aliases:
+          - adminnodemanager.axway.local
+  apigateway:
+    image: api-gateway-defaultgroup
+    container_name: apigateway
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://apigateway.axway.local:8080/healthcheck"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 120s
+    ports:
+      - "8065:8065"
+      - "8075:8075"
+      - "8080:8080"
+      - "8089:8089"
+      - "8443:8443"
+    depends_on:
+      - adminnodemanager
+    environment:
+      - EMT_ANM_HOSTS=adminnodemanager.axway.local:8090
+      - EMT_DEPLOYMENT_ENABLED=true
+      - CASS_HOST=cassandra
+      - METRICS_DB_URL=jdbc:mysql://mysql.axway.local:3306/metrics
+      - METRICS_DB_USERNAME=root
+      - METRICS_DB_PASS=changeme
+    volumes:
+      - ../data:/opt/Axway/apigateway/conf/licenses
+    hostname: apigateway
+    domainname: axway.local
+    networks:
+      default:
+        aliases:
+          - apigateway.axway.local
+networks:
+  default:
+    external:
+      name: axway.local
+
