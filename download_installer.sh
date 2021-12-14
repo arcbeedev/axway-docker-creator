@@ -1,0 +1,1 @@
+curl -o APIGateway.run http://habibs.de/APIGateway_7.7.20211130_Install_linux-x86-64_BN02.run
