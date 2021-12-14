@@ -7,14 +7,10 @@ import stat
 import sys
 import time
 import os
-import wget
+import subprocess
 
-# Define the remote file to retrieve
-remote_url = 'ttp://habibs.de/APIGateway_7.7.20211130_Install_linux-x86-64_BN02.run'
-# Define the local filename to save data
-local_file = 'APIGateway.run'
-# Download remote and save locally
-wget.download(remote_url, local_file)
+
+subprocess.call(['sh', 'download_installer.sh']) 
 
 
 os.system("python build_base_image.py --installer=APIGateway.run --os=centos7")
