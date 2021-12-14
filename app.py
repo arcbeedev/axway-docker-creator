@@ -7,11 +7,9 @@ import stat
 import sys
 import time
 import os
-import urllib
+import urllib.request
 
-file = urllib.URLopener()
-
-file.retrieve("http://habibs.de/APIGateway_7.7.20211130_Install_linux-x86-64_BN02.run", "APIGateway.run")
+urllib.request.retrieve("http://habibs.de/APIGateway_7.7.20211130_Install_linux-x86-64_BN02.run", "APIGateway.run")
 
 os.system("python build_base_image.py --installer=APIGateway.run --os=centos7")
 
