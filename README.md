@@ -1,7 +1,7 @@
 # axway-docker-creator
 
 ## Introduction
-TEXT
+This is an example of a new installation in Docker Containers. This installation is suitable for a DEV environment.
 
 
 ## Set up Docker environment
