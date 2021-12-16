@@ -150,3 +150,5 @@ If you specify a custom CentOS7 or RHEL7-based OS Docker image, Docker first tri
 - Uses an environment variable EMT_TRACE_LEVEL to set a trace level inside the container. In the above example a trace level switches from INFO to DEBUG level during container startup.
 - Sets the EMT_ANM_HOSTS environment variable to anm:8090 in the container. This enables the API Gateway to communicate with the Admin Node Manager container on port 8090. The API Gateway is now visible in the API Gateway Manager topology view.
 
+
+ #### Now you can push your Docker images to your Docker registry.
