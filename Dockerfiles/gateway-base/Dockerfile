@@ -18,4 +18,4 @@ ARG USER_GID
 RUN groupadd emtuser -g $USER_GID
 RUN adduser emtuser -u $USER_UID -g $USER_GID -c "EMT User" && \
     chmod 777 /opt
-COPY --chown=emtuser --from=builder /opt/Axway /opt/Axway
+COPY --from=builder /opt/Axway /opt/Axway

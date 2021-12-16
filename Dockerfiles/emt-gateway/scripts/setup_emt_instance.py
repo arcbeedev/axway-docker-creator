@@ -374,6 +374,15 @@ def _setupApiManager():
                 parent = es.get("/[CassandraSettings]name=Cassandra Settings")
                 es.addNewEntity(parent, "CassandraServer", props)
 
+
+                #add pass
+                cass_config_db = es.get("/[CassandraSettings]name=Cassandra Settings")
+                cass_config_db.setStringField("username", "${environment.CASS_USERNAME}")
+                #cass_config_db.setStringField("password", "Y2Fzc2FuZHJh") #cassandra
+                cass_config_db.setStringField("password", "Y2Fzc2FuZHJhMTIz") #cassandra123
+                es.updateEntity(cass_config_db);
+
+
             # Enable API Manager metrics. Connection to metrics DB will be configured via
             # environment variables.
             print("   Enabling API Manager metrics")
