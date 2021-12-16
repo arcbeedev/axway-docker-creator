@@ -1,3 +1,0 @@
-<ConfigurationFragment>
-    <VMArg name="-Dapi.manager.orgadmin.selfservice.enabled=true"/>
-</ConfigurationFragment>
